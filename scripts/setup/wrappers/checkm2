@@ -1,0 +1,4 @@
+#!/bin/sh
+# Auto-generated wrapper: pathseq-t2t routes checkm2 to sidecar env pathseq_t2t_checkm2.
+# Re-run scripts/setup/install_conda_env.sh checkm2 to regenerate.
+PATH="/home/inspirewind/miniconda3/envs/pathseq_t2t_checkm2/bin:${PATH}" exec "/home/inspirewind/miniconda3/envs/pathseq_t2t_checkm2/bin/checkm2" "$@"

@@ -207,8 +207,8 @@ HLP
   on_exit_qcfilter() {
     local ec=$?
     if [[ $ec -ne 0 ]]; then
-      for d in "${PART_PAIRED_DIR}" "${PART_UNPAIRED_DIR}"; do
-        if [[ -d "$d" ]]; then
+      for d in "${PART_PAIRED_DIR:-}" "${PART_UNPAIRED_DIR:-}"; do
+        if [[ -n "$d" && -d "$d" ]]; then
           log "Cleaning leftover Spark parts (failure): $d"
           rm -rf "$d"
         fi

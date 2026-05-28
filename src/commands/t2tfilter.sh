@@ -250,7 +250,7 @@ HLP
     log "[ Extracting paired unaligned reads ]"
     time samtools view -@ "${threads}" -bh "${bam_aligned_paired}" -f 3 -e '[AS]>35' \
       -U >(samtools view -@ "${threads}" -bh -F 2048 -x SA -x OQ -x MD -o "${output_paired}") \
-      -o >/dev/null #(samtools flagstat --output-fmt tsv - > "${flagstat_aligned_paired}")
+      -o /dev/null #(samtools flagstat --output-fmt tsv - > "${flagstat_aligned_paired}")
 
     if [[ -n "${decoys_to_mask}" ]]; then
       log "[ Extracting paired decoy-overlap reads for merge ]"
@@ -260,7 +260,7 @@ HLP
       if [[ -s "${bam_decoys_paired}" ]]; then
         local tmp_merge_p="${output_paired}.tmp.merge.bam"
         log "[ Merging paired decoy-overlap reads into output ]"
-        time samtools cat -@ "${threads}" -o "${tmp_merge_p}" "${output_paired}" "${bam_decoys_paired}"
+        time samtools cat -o "${tmp_merge_p}" "${output_paired}" "${bam_decoys_paired}"
         mv -f "${tmp_merge_p}" "${output_paired}"
       fi
     fi
@@ -279,7 +279,7 @@ HLP
     log "[ Extracting unpaired unaligned reads ]"
     time samtools view -@ "${threads}" -bh "${bam_aligned_unpaired}" -e '[AS]>35' \
       -U >(samtools view -@ "${threads}" -bh -F 2048 -x SA -x OQ -x MD -o "${output_unpaired}") \
-      -o >/dev/null #(samtools flagstat --output-fmt tsv - > "${flagstat_aligned_unpaired}")
+      -o /dev/null #(samtools flagstat --output-fmt tsv - > "${flagstat_aligned_unpaired}")
 
     if [[ -n "${decoys_to_mask}" ]]; then
       log "[ Extracting unpaired decoy-overlap reads for merge ]"
@@ -289,7 +289,7 @@ HLP
       if [[ -s "${bam_decoys_unpaired}" ]]; then
         local tmp_merge_u="${output_unpaired}.tmp.merge.bam"
         log "[ Merging unpaired decoy-overlap reads into output ]"
-        time samtools cat -@ "${threads}" -o "${tmp_merge_u}" "${output_unpaired}" "${bam_decoys_unpaired}"
+        time samtools cat -o "${tmp_merge_u}" "${output_unpaired}" "${bam_decoys_unpaired}"
         mv -f "${tmp_merge_u}" "${output_unpaired}"
       fi
     fi

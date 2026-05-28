@@ -158,6 +158,7 @@ _require_trim_galore_0610() {
   v="$(
     awk '
       match($0, /[Vv]ersion[[:space:]]+([0-9]+(\.[0-9]+){1,3})/, m) { print m[1]; exit }
+      match($0, /^trim_galore[[:space:]]+([0-9]+(\.[0-9]+){1,3})/, m) { print m[1]; exit }
     ' <<<"$raw"
   )"
   [[ -n "$v" ]] || die "Could not parse trim_galore version from output:

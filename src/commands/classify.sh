@@ -451,9 +451,9 @@ Proceeding with all provided indexes and taxonomy tags."
           --read_min_len 60 \
           --input_type fastq \
           --index "${metaphlan_index}" \
-          --bowtie2db "${bowtie2_index}" \
+          --db_dir "${bowtie2_index}" \
           -t rel_ab_w_read_stats \
-          --bowtie2out "${bowtie2out_mpa}" \
+          --mapout "${bowtie2out_mpa}" \
           "${metaphlan_args_ary[@]}" \
           > "${mpa_out}"
       fi

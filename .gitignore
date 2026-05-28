@@ -28,3 +28,9 @@ test_pathseq_t2t.sh
 # local helper scripts
 cleanup_assembly_keep_intermediate.sh
 GIT
+
+
+# my-dev
+analysis/figures
+CLAUDE.md
+.claude/
